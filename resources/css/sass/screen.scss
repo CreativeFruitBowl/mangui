@@ -1,0 +1,60 @@
+/**
+ * Load our dependencies
+ *
+ * [1]	Load our framework mixins
+ * [2]	Load default framework settings
+ * [3]	Framework base files (reset, structure and defaults)
+ * [4]	Start loading our framework components
+ * [5]	Load our theme overrides
+ * [6]	
+ */
+
+
+
+
+
+/**
+ * [1]	Load our framework mixins
+ */
+
+@import "mangui/mangui.mixins/mixins.core";
+
+
+
+
+
+/**
+ * [2]	Load default framework settings
+ */
+
+@import "mangui/mangui.settings/settings.core";
+
+
+
+
+
+/**
+ * [3]	Framework base files (reset, structure and defaults)
+ */
+
+@import "mangui/mangui.framework/framework.base/base.core";
+
+
+
+
+
+/**
+ * [4]	Start loading our framework components
+ */
+
+@import "mangui/mangui.framework/framework.components/components.core";
+
+
+
+
+
+/**
+ * [5]	Load our theme overrides
+ */
+
+@import "theme/theme.core";

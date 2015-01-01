@@ -1,0 +1,9 @@
+/**
+ * Let's include mixins (vendor and author)
+ * 
+ * [a]	Rempx mixin for converting px values to rem and vice-versa
+ * [b]	Transition helper functions for CSS3 values
+ * [c]	Custom mixins for @media queries
+ */
+
+@import "mixins.vendor/mixins.rempx";

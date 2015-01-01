@@ -1,0 +1,11 @@
+/**
+ * Import our sub files
+ *
+ * [1]	Import default settings for the framework
+ * [2]	Redefine variable names to be $mangui-...
+ * [3]	Override the default framework settings with custom ones
+ */
+
+@import "settings.defaults"; // [1]
+@import "settings.setup"; // [2]
+@import "../../theme/theme.settings/settings.defaults"; // [3]

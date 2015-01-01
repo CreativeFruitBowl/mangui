@@ -1,0 +1,65 @@
+/**
+ * Full width navigation
+ */
+
+.nav--full {
+	background: #EEE;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+
+
+
+
+
+		/**
+		 * Overriding nav items (<li>)
+		 * 
+		 * [a]	Add some colour to the navigation items
+		 * [b]	Add a hover effect
+		 * [c]	Remove the underline effect, it looks ugly
+		 * [d]	Match the font colour to better suit nav colours
+		 */
+
+		.nav__item:last-child {
+			border-right: 1px solid #DDD;
+		}
+
+
+			.nav__link {
+				background: #EEE; // [a]
+				border-left: 1px solid #DDD; // [a]
+				text-decoration: none;
+				color: #666;
+				@extend %transition--250;
+				
+
+				&:hover {
+					background: #E5E5E5; // [b]
+				}
+			}
+
+
+
+
+
+	/**
+	 * Sub menu styling
+	 *
+	 * [a]	Give our dropdowns a bottom border to match
+	 * [b]	Arbitary width, there's no magic way of working 
+	 * 		this one out I'm afraid
+	 */
+
+	.nav__list--sub {
+		background: #EEE;
+		border: solid #DDD;
+		border-width: 0 1px 1px;
+		@include rempx(width, 200px); // [b]
+	}
+
+
+			.nav__link--sub {
+				border-left: 0;
+				border-right: 0;
+			}

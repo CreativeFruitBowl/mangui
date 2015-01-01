@@ -1,0 +1,35 @@
+@import "base.normalize",
+		"base.grid";
+
+
+
+
+
+/**
+ * Global styling rules
+ *
+ * [1]	Container
+ */
+
+
+
+
+
+/**
+ * [1]	Container
+ *
+ * 		[a]	Set a maximum width to our container
+ * 		[b]	Align the container to the horizontal centre of the viewport
+ */
+
+.container,
+%container {
+	@if $mangui-is-responsive--large {
+		@include rempx(max-width, $mangui-max-width);
+	} @else {
+		@include rempx(max-width, 960px);
+	}
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}

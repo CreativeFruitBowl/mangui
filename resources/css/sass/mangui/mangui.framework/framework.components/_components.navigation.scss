@@ -1,0 +1,127 @@
+/**
+ * Nav list styling (<ul>)
+ *
+ * [a]	Reset margins and padding to avoid affecting grid
+ */
+
+.nav__list {
+	margin: 0; // [a]
+	padding: 0; // [a]
+}
+
+
+
+
+
+	/**
+	 * List item styling
+	 * 
+	 * [a]	Set to relative so the absolute `.nav__sub` child behaves correctly
+	 */
+	
+	.nav__item {
+		position: relative; // [a]
+	}
+
+
+
+
+
+		/**
+		 * Default nav item styling
+		 *
+		 * [a]	Make the entire link clickable, it's better for usability
+		 * [b]	Give the links some padding, using em's bases padding on font-size
+		 */
+
+		.nav__link {
+			display: block; // [b]
+			padding: 0.5em 1em; // [a]
+		}
+
+
+
+
+
+		/**
+		 * Sub navigations
+		 *
+		 * [a]	Stop the sub navs from affecting layout
+		 * [b]	Get the dropdowns to align correctly
+		 * [c]
+		 * [d]	Fill the entire width of the dropdown
+		 */
+		
+		.nav__list--sub {
+			position: absolute; // [a]
+			left: 0; // [b]
+			@include rempx(padding, ($mangui-vertical-rhythm/3)*2 0); // [c]
+
+
+			.nav__item {
+				width: 100%; // [d]
+			}
+		}
+		
+
+
+
+
+
+
+
+
+
+
+/**
+ * Horizontal row navigation
+ *
+ * [a]	Get the nav items to align without floating, allowing
+ * 		for greater control over vertical-align
+ * [b]	Reset the above to get text working correctly
+ * [c]	The same for [a] but fixes Opera bug
+ * [d]	The same for [b] but fixes Opera bug
+ * [e]	Get the nav items in a row, without floating
+ */
+
+.nav--row {
+	letter-spacing: -0.31em; // [a]
+
+
+	.nav__item {
+		letter-spacing: normal; // [b]
+		word-spacing: normal; // [d]
+		display: inline-block; // [e]
+	}
+}
+
+
+.opera:-o-prefocus,
+.grid {
+	word-spacing: -0.43em; // [c]
+}
+
+
+
+
+
+/**
+ * nav--big signifies a more important navigation
+ *
+ * [a]	Make the font size bigger
+ */
+
+.nav--big {
+	.nav__link {
+		padding: 0.75em 1.5em;
+		@include rempx(font-size, 22px);
+	}
+
+
+	.nav__list--sub {
+		.nav__link {
+			padding: 0.5em 1em;
+			@include rempx(font-size, 16px);
+		}
+	}
+}

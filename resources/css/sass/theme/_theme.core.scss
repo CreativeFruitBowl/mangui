@@ -1,5 +1,19 @@
 /**
  * Import our overrides for the framework defaults
+ *
+ * [1]	Include our core files, such as typography
+ * [2]	Time to include or component specific overrides
  */
 
-@import "theme.components/components.navigation";
+@import "theme.base/base.core"; // [1]
+
+
+
+
+
+/**
+ * [2]	Time to include or component specific overrides
+ *
+ * 		[a]	Navigation
+ */
+@import "theme.components/components.navigation"; // [a]

@@ -1,0 +1,1164 @@
+@charset "UTF-8";
+/**
+ * Load our dependencies
+ *
+ * [1]	Load our framework mixins
+ * [2]	Load default framework settings
+ * [3]	Framework base files (reset, structure and defaults)
+ * [4]	Start loading our framework components
+ * [5]	Load our theme overrides
+ * [6]	
+ */
+/**
+ * [1]	Load our framework mixins
+ */
+/**
+ * Let's include mixins (vendor and author)
+ * 
+ * [a]	Rempx mixin for converting px values to rem and vice-versa
+ * [b]	Transition helper functions for CSS3 values
+ * [c]	Custom mixins for @media queries
+ */
+/**
+ * SASS mixing for REM with fallback for IE8
+ *
+ * @since 0.1.0-alpha
+ */
+/**
+ * Base font size (can be overwritten in /theme/)
+ */
+/**
+ * [1] - The mixin relies on a function to parse the integer from a value with a unit
+ * 
+ * @param  {integer} $n
+ * @return {integer}
+ */
+/**
+ * [2] - We define a list of values for both units
+ * [3] - We iterate through each value in the given parameter $values
+ * [4] - If the value is either auto or 0, we append it to the list as-is
+ * [5] - If the value as a unit, we split it to get the unit and the raw value
+ * [6] - We append according values to the lists depending on the unit of the given value
+ * [7] - We output the result
+ */
+/**
+ * Usage
+ */
+/*
+body {
+	@include rem(font-size, 1.6rem);
+}
+*/
+/**
+ * Default transition mixins
+ */
+/**
+ * Default transitions
+ */
+.nav__link {
+  -webkit-transition: ease-in-out 250ms all;
+  -moz-transition: ease-in-out 250ms all;
+  -o-transition: ease-in-out 250ms all;
+  transition: ease-in-out 250ms all;
+}
+
+/**
+ * Breakpoints, using our $mangui-breakpoints variable
+ */
+/**
+ * This is where the magic happens...
+ *
+ * [a]	Name our mixins and pass a variable. The value of this variable can be either 
+ * 		a value from the $mangui-breakpoints variable or a custom one, such as:
+ * 			@include mangui-breakpoint(desk) { ... }
+ * 			@include mangui-breakpoint("min-width: 401px) and (max-width: 480px") { ... }
+ * [b]	Reset a variable required for our conditional statement to work
+ * [c]	Loop through each breakpoint in $mangui-breakpoints
+ * [d]	Get the 'name' and 'declaration' from each breakpoint
+ * [e]	If the name of the breakpoint matches our mixin variable
+ * [f]	Tell the variable we've found it, so it doesn't continue through the if()
+ * [g]	Output our media query, using the breakpoint declaration and the content provided
+ * 		within the @include
+ * [h]	If $point did not match any of the breakpoints within $mangui-breakpoints
+ * [i]	Create a media query using the value of $point
+ */
+/**
+ * Example usage:
+ */
+/*
+
+	@include mangui-breakpoint(desk) {
+		.desk {
+			display: none;
+		}
+	}
+
+	@include mangui-breakpoint(lap) {
+		.lap {
+			display: none;
+		}
+	}
+
+	@include mangui-breakpoint(portable) {
+		.portable {
+			display: none;
+		}
+	}
+
+	@include mangui-breakpoint(palm) {
+		.palm {
+			display: none;
+		}
+	}
+
+	@include mangui-breakpoint("min-width: 401px) and (max-width: 480px") {
+		.custom {
+			display: none;
+		}
+	}
+
+ */
+/**
+ * [2]	Load default framework settings
+ */
+/**
+ * Import our sub files
+ *
+ * [1]	Import default settings for the framework
+ * [2]	Redefine variable names to be $mangui-...
+ * [3]	Override the default framework settings with custom ones
+ */
+/**
+ * Theme settings
+ *
+ * [1]	Is this site responsive?
+ * [2]	Sizes
+ * [3]	Grid setup
+ */
+/**
+ * [1]	Is the site responsive?
+ *
+ * [a]	Let's default to yes. If false, ignore the rest of this section
+ * [b]	Are we building the site mobile first? If true, .grid__item(s) 
+ * 		will be set to 100% width
+ * [c]	Define whether we're going bigger than the default 960px grid
+ */
+/**
+ * [2]	Sizes
+ *
+ * [a]	Let's define our breakpoints
+ * [b]	What's the largest width our site will be?
+ */
+/**
+ * [3]	Grid setup
+ *
+ * [a]	Comment should really go here
+ * [b]	And here
+ * [c]	And here...
+ * [d]	I probably should comment this code?
+ * [e]	Just added this one, maybe document it too?
+ */
+/**
+ * Theme settings
+ *
+ * [1]	Let's override the default variables with $mangui- ones
+ * [2]	Define $mangui defaults below
+ */
+/**
+ * [1]	Let's override the default variables with $mangui- ones
+ *
+ * 		[a]	CSS Wizardry Grids
+ */
+/**
+ * [a] CSS Wizardry Grids
+ */
+/**
+ * Let's override the frameworks's default variables
+ */
+/**
+ * [3]	Framework base files (reset, structure and defaults)
+ */
+/* normalize.css v2.1.3 | MIT License | git.io/normalize */
+/* normalize.scss v2.1.3 | MIT/GPLv2 License | bit.ly/normalize-with-compass */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+  outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  /* Set the font-size and line-height while keeping a proper vertical rhythm. */
+  font-size: 2em;
+  /* Set 1 unit of vertical rhythm on the top and bottom margins. */
+  margin-top: 0.92308em;
+  margin-bottom: 0.92308em;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong {
+  font-weight: 600;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  margin: 0 2px;
+  /* Apply borders and padding that keep the vertical rhythm. */
+  border-color: #c0c0c0;
+  border-top-width: 0.07692em;
+  border-top-style: solid;
+  padding-top: 0.56923em;
+  border-bottom-width: 0.07692em;
+  border-bottom-style: solid;
+  padding-bottom: 1.12308em;
+  border-left-width: 0.07692em;
+  border-left-style: solid;
+  padding-left: 1.07692em;
+  border-right-width: 0.07692em;
+  border-right-style: solid;
+  padding-right: 1.07692em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * 4. Improve appearance and consistency with IE 6/7.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /*    @include box-sizing(content-box); /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*------------------------------------*\
+    $CSSWIZARDRY-GRIDS
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * INTRODUCTION.........How the grid system works.
+ * VARIABLES............Your settings.
+ * MIXINS...............Library mixins.
+ * GRID SETUP...........Build the grid structure.
+ * WIDTHS...............Build our responsive widths around our breakpoints.
+ * PUSH.................Push classes.
+ * PULL.................Pull classes.
+ */
+/*------------------------------------*\
+    $INTRODUCTION
+\*------------------------------------*/
+/**
+ * csswizardry grids provides you with widths to suit a number of breakpoints
+ * designed around devices of a size you specify. Out of the box, csswizardry
+ * grids caters to the following types of device:
+ *
+ * palm     --  palm-based devices, like phones and small tablets
+ * lap      --  lap-based devices, like iPads or laptops
+ * portable --  all of the above
+ * desk     --  stationary devices, like desktop computers
+ * regular  --  any/all types of device
+ *
+ * These namespaces are then used in the library to give you the ability to
+ * manipulate your layouts based around them, for example:
+ *
+   <div class="grid__item  one-whole  lap--one-half  desk--one-third">
+ *
+ * This would give you a grid item which is 100% width unless it is on a lap
+ * device, at which point it become 50% wide, or it is on a desktop device, at
+ * which point it becomes 33.333% width.
+ *
+ * csswizardry grids also has push and pull classes which allow you to nudge
+ * grid items left and right by a defined amount. These follow the same naming
+ * convention as above, but are prepended by either `push--` or `pull--`, for
+ * example:
+ *
+   `class="grid__item  one-half  push--one-half"`
+ *
+ * This would give you a grid item which is 50% width and pushed over to the
+ * right by 50%.
+ *
+ * All classes in csswizardry grids follow this patten, so you should fairly
+ * quickly be able to piece together any combinations you can imagine, for
+ * example:
+ *
+   `class="grid__item  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
+ *
+   `class="grid__item  one-quarter  palm--one-half  push--palm--one-half"`
+ *
+   `class="grid__item  palm--one-third  desk--five-twelfths"`
+ */
+/*------------------------------------*\
+    $VARIABLES
+\*------------------------------------*/
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
+ */
+/**
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+/**
+ * Set the spacing between your grid items.
+ */
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+/**
+ * Would you like push and pull classes enabled?
+ */
+/**
+ * Using `inline-block` means that the grid items need their whitespace removing
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm--one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+/**
+ * You do not need to edit anything from this line onward; csswizardry-grids is
+ * good to go. Happy griddin’!
+ */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * These mixins are for the library to use only, you should not need to modify
+ * them at all.
+ *
+ * Enclose a block of code with a media query as named in `$breakpoints`.
+ */
+/**
+ * Drop relative positioning into silent classes which can’t take advantage of
+ * the `[class*="push--"]` and `[class*="pull--"]` selectors.
+ */
+/*------------------------------------*\
+    $GRID SETUP
+\*------------------------------------*/
+/**
+ * 1. Allow the grid system to be used on lists.
+ * 2. Remove any margins and paddings that might affect the grid system.
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+ */
+.grid {
+  list-style: none;
+  /* [1] */
+  margin: 0;
+  /* [2] */
+  padding: 0;
+  /* [2] */
+  margin-left: -24px;
+  /* [3] */
+  letter-spacing: -0.31em;
+}
+
+/* Opera hack */
+.opera:-o-prefocus,
+.grid {
+  word-spacing: -0.43em;
+}
+
+/**
+ * 1. Cause columns to stack side-by-side.
+ * 2. Space columns apart.
+ * 3. Align columns to the tops of each other.
+ * 4. Full-width unless told to behave otherwise.
+ * 5. Required to combine fluid widths and fixed gutters.
+ */
+.grid__item {
+  display: inline-block;
+  /* [1] */
+  padding-left: 24px;
+  /* [2] */
+  vertical-align: top;
+  /* [3] */
+  -webkit-box-sizing: border-box;
+  /* [5] */
+  -moz-box-sizing: border-box;
+  /* [5] */
+  box-sizing: border-box;
+  /* [5] */
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/**
+ * Reversed grids allow you to structure your source in the opposite order to
+ * how your rendered layout will appear. Extends `.grid`.
+ */
+.grid--rev {
+  direction: rtl;
+  text-align: left;
+}
+.grid--rev > .grid__item {
+  direction: ltr;
+  text-align: left;
+}
+
+/**
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ * Extends `.grid`.
+ */
+.grid--full {
+  margin-left: 0;
+}
+.grid--full > .grid__item {
+  padding-left: 0;
+}
+
+/**
+ * Align the entire grid to the right. Extends `.grid`.
+ */
+.grid--right {
+  text-align: right;
+}
+.grid--right > .grid__item {
+  text-align: left;
+}
+
+/**
+ * Centered grids align grid items centrally without needing to use push or pull
+ * classes. Extends `.grid`.
+ */
+.grid--center {
+  text-align: center;
+}
+.grid--center > .grid__item {
+  text-align: left;
+}
+
+/**
+ * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+ * `.grid`.
+ */
+.grid--middle > .grid__item {
+  vertical-align: middle;
+}
+
+.grid--bottom > .grid__item {
+  vertical-align: bottom;
+}
+
+/**
+ * Create grids with narrower gutters. Extends `.grid`.
+ */
+.grid--narrow {
+  margin-left: -12px;
+}
+.grid--narrow > .grid__item {
+  padding-left: 12px;
+}
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+.grid--wide {
+  margin-left: -48px;
+}
+.grid--wide > .grid__item {
+  padding-left: 48px;
+}
+
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Create our width classes, prefixed by the specified namespace.
+ */
+/**
+ * Our regular, non-responsive width classes.
+ */
+/**
+ * Whole
+ */
+.one-whole {
+  width: 100%;
+}
+
+/**
+ * Halves
+ */
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths {
+  width: 50%;
+}
+
+/**
+ * Thirds
+ */
+.one-third, .two-sixths, .four-twelfths {
+  width: 33.333%;
+}
+
+.two-thirds, .four-sixths, .eight-twelfths {
+  width: 66.666%;
+}
+
+/**
+ * Quarters
+ */
+.one-quarter, .two-eighths, .three-twelfths {
+  width: 25%;
+}
+
+.three-quarters, .six-eighths, .nine-twelfths {
+  width: 75%;
+}
+
+/**
+ * Fifths
+ */
+.one-fifth, .two-tenths {
+  width: 20%;
+}
+
+.two-fifths, .four-tenths {
+  width: 40%;
+}
+
+.three-fifths, .six-tenths {
+  width: 60%;
+}
+
+.four-fifths, .eight-tenths {
+  width: 80%;
+}
+
+/**
+ * Sixths
+ */
+.one-sixth, .two-twelfths {
+  width: 16.666%;
+}
+
+.five-sixths, .ten-twelfths {
+  width: 83.333%;
+}
+
+/**
+ * Eighths
+ */
+.one-eighth {
+  width: 12.5%;
+}
+
+.three-eighths {
+  width: 37.5%;
+}
+
+.five-eighths {
+  width: 62.5%;
+}
+
+.seven-eighths {
+  width: 87.5%;
+}
+
+/**
+ * Tenths
+ */
+.one-tenth {
+  width: 10%;
+}
+
+.three-tenths {
+  width: 30%;
+}
+
+.seven-tenths {
+  width: 70%;
+}
+
+.nine-tenths {
+  width: 90%;
+}
+
+/**
+ * Twelfths
+ */
+.one-twelfth {
+  width: 8.333%;
+}
+
+.five-twelfths {
+  width: 41.666%;
+}
+
+.seven-twelfths {
+  width: 58.333%;
+}
+
+.eleven-twelfths {
+  width: 91.666%;
+}
+
+/**
+ * Our responsive classes, if we have enabled them.
+ */
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items back to the left by certain amounts.
+ */
+/**
+ * Global styling rules
+ *
+ * [1]	Container
+ */
+/**
+ * [1]	Container
+ *
+ * 		[a]	Set a maximum width to our container
+ * 		[b]	Align the container to the horizontal centre of the viewport
+ */
+.container {
+  max-width: 1150px;
+  max-width: 71.875rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * [4]	Start loading our framework components
+ */
+/**
+ * Nav list styling (<ul>)
+ *
+ * [a]	Reset margins and padding to avoid affecting grid
+ */
+.nav__list {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * List item styling
+ * 
+ * [a]	Set to relative so the absolute `.nav__sub` child behaves correctly
+ */
+.nav__item {
+  position: relative;
+}
+
+/**
+ * Default nav item styling
+ *
+ * [a]	Make the entire link clickable, it's better for usability
+ * [b]	Give the links some padding, using em's bases padding on font-size
+ */
+.nav__link {
+  display: block;
+  padding: 0.5em 1em;
+}
+
+/**
+ * Sub navigations
+ *
+ * [a]	Stop the sub navs from affecting layout
+ * [b]	Get the dropdowns to align correctly
+ * [c]
+ * [d]	Fill the entire width of the dropdown
+ */
+.nav__list--sub {
+  position: absolute;
+  left: 0;
+  padding: 16px 0;
+  padding: 1rem 0;
+}
+.nav__list--sub .nav__item {
+  width: 100%;
+}
+
+/**
+ * Horizontal row navigation
+ *
+ * [a]	Get the nav items to align without floating, allowing
+ * 		for greater control over vertical-align
+ * [b]	Reset the above to get text working correctly
+ * [c]	The same for [a] but fixes Opera bug
+ * [d]	The same for [b] but fixes Opera bug
+ * [e]	Get the nav items in a row, without floating
+ */
+.nav--row {
+  letter-spacing: -0.31em;
+}
+.nav--row .nav__item {
+  letter-spacing: normal;
+  word-spacing: normal;
+  display: inline-block;
+}
+
+.opera:-o-prefocus,
+.grid {
+  word-spacing: -0.43em;
+}
+
+/**
+ * nav--big signifies a more important navigation
+ *
+ * [a]	Make the font size bigger
+ */
+.nav--big .nav__link {
+  padding: 0.75em 1.5em;
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+.nav--big .nav__list--sub .nav__link {
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/**
+ * [5]	Load our theme overrides
+ */
+/**
+ * Import our overrides for the framework defaults
+ *
+ * [1]	Include our core files, such as typography
+ * [2]	Time to include or component specific overrides
+ */
+html {
+  font-family: Merriweather, serif;
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", Merriweather, serif;
+}
+
+/**
+ * [2]	Time to include or component specific overrides
+ *
+ * 		[a]	Navigation
+ */
+/**
+ * Full width navigation
+ */
+.nav--full {
+  background: #EEE;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+
+/**
+ * Overriding nav items (<li>)
+ * 
+ * [a]	Add some colour to the navigation items
+ * [b]	Add a hover effect
+ * [c]	Remove the underline effect, it looks ugly
+ * [d]	Match the font colour to better suit nav colours
+ */
+.nav__item:last-child {
+  border-right: 1px solid #DDD;
+}
+
+.nav__link {
+  background: #EEE;
+  border-left: 1px solid #DDD;
+  text-decoration: none;
+  color: #666;
+}
+.nav__link:hover {
+  background: #E5E5E5;
+}
+
+/**
+ * Sub menu styling
+ *
+ * [a]	Give our dropdowns a bottom border to match
+ * [b]	Arbitary width, there's no magic way of working 
+ * 		this one out I'm afraid
+ */
+.nav__list--sub {
+  background: #EEE;
+  border: solid #DDD;
+  border-width: 0 1px 1px;
+  width: 200px;
+  width: 12.5rem;
+}
+
+.nav__link--sub {
+  border-left: 0;
+  border-right: 0;
+}
+
+/*# sourceMappingURL=screen.css.map */

@@ -1114,6 +1114,24 @@ table {
 }
 
 /**
+ * Full width navigation with `.nav__item`s filling entire
+ * available space
+ *
+ * [a]	As flexbox isn't fully supported, we're using `display: table`
+ * 		and `display: table-cell`
+ * [b]	Get the nav to go full width
+ * [c]	Align the text to the centre
+ */
+.nav__list--full {
+  display: table;
+  width: 100%;
+}
+.nav__list--full .nav__item--full {
+  display: table-cell;
+  text-align: center;
+}
+
+/**
  * [5]	Load our theme overrides
  */
 /**

@@ -21,7 +21,7 @@
 		 * [d]	Match the font colour to better suit nav colours
 		 */
 
-		.nav__item:last-child {
+		.nav--row .nav__item:last-child {
 			border-right: 1px solid #DDD;
 		}
 

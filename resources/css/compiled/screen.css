@@ -1013,9 +1013,11 @@ table {
  * List item styling
  * 
  * [a]	Set to relative so the absolute `.nav__sub` child behaves correctly
+ * [b]	Remove bullets from the nav
  */
 .nav__item {
   position: relative;
+  display: block;
 }
 
 /**
@@ -1033,18 +1035,42 @@ table {
  * Sub navigations
  *
  * [a]	Stop the sub navs from affecting layout
- * [b]	Get the dropdowns to align correctly
- * [c]
- * [d]	Fill the entire width of the dropdown
+ * [b]	Throw the dropdowns off screen
+ * [c]	Add some padding to the top and bottom
+ * [d]	Fade in the dropdowns, but delay the left transition to make
+ * 		sure the dropdowns fade out too
+ * [e]	Fill the entire width of the dropdown
  */
 .nav__list--sub {
   position: absolute;
-  left: 0;
+  opacity: 0;
+  left: -2000px;
+  left: -125rem;
   padding: 16px 0;
   padding: 1rem 0;
+  -webkit-transition: ease-in-out 350ms opacity, ease-in-out 1ms 350ms left;
+  -moz-transition: ease-in-out 350ms opacity, ease-in-out 1ms 350ms left;
+  -o-transition: ease-in-out 350ms opacity, ease-in-out 1ms 350ms left;
+  transition: ease-in-out 350ms opacity, ease-in-out 1ms 350ms left;
 }
 .nav__list--sub .nav__item {
   width: 100%;
+}
+
+/**
+ * On hover and focus, reveal the dropdowns
+ *
+ * [a]	Align the dropdowns to the right position
+ * [b]	Fade them in...
+ * [c]	...smoothly
+ */
+.nav__item--has-sub:hover .nav__list--sub, .nav__item--has-sub:focus .nav__list--sub {
+  left: 0;
+  opacity: 1;
+  -webkit-transition: ease-in-out 350ms opacity;
+  -moz-transition: ease-in-out 350ms opacity;
+  -o-transition: ease-in-out 350ms opacity;
+  transition: ease-in-out 350ms opacity;
 }
 
 /**
@@ -1127,7 +1153,7 @@ h2 {
  * [c]	Remove the underline effect, it looks ugly
  * [d]	Match the font colour to better suit nav colours
  */
-.nav__item:last-child {
+.nav--row .nav__item:last-child {
   border-right: 1px solid #DDD;
 }
 

@@ -17,10 +17,12 @@
 	 * List item styling
 	 * 
 	 * [a]	Set to relative so the absolute `.nav__sub` child behaves correctly
+	 * [b]	Remove bullets from the nav
 	 */
 	
 	.nav__item {
 		position: relative; // [a]
+		display: block; // [b]
 	}
 
 
@@ -47,21 +49,45 @@
 		 * Sub navigations
 		 *
 		 * [a]	Stop the sub navs from affecting layout
-		 * [b]	Get the dropdowns to align correctly
-		 * [c]
-		 * [d]	Fill the entire width of the dropdown
+		 * [b]	Throw the dropdowns off screen
+		 * [c]	Add some padding to the top and bottom
+		 * [d]	Fade in the dropdowns, but delay the left transition to make
+		 * 		sure the dropdowns fade out too
+		 * [e]	Fill the entire width of the dropdown
 		 */
 		
 		.nav__list--sub {
 			position: absolute; // [a]
-			left: 0; // [b]
+			opacity: 0;
+			@include rempx(left, -2000px); // [b]
 			@include rempx(padding, ($mangui-vertical-rhythm/3)*2 0); // [c]
+			@include mangui-transition(ease-in-out 350ms opacity, ease-in-out 1ms 350ms left); // [d]
 
 
 			.nav__item {
-				width: 100%; // [d]
+				width: 100%; // [e]
 			}
 		}
+
+
+	/**
+	 * On hover and focus, reveal the dropdowns
+	 *
+	 * [a]	Align the dropdowns to the right position
+	 * [b]	Fade them in...
+	 * [c]	...smoothly
+	 */
+
+	.nav__item--has-sub {
+		&:hover,
+		&:focus {
+			.nav__list--sub {
+				left: 0; // [a]
+				opacity: 1; // [b]
+				@include mangui-transition(ease-in-out 350ms opacity); // [c]
+			}
+		}
+	}
 		
 
 
